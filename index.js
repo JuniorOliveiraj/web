@@ -30,17 +30,14 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
           card.style.width = '18rem';
 
           const images = pokemon.sprites;
-          // for (const property in images) {
-          //   if (typeof images[property] === 'string' && images[property].startsWith('http')) {
-          //     const cardImage = document.createElement('img');
-          //     cardImage.classList.add('.carousel-item');
-          //     cardImage.src = images[property];
-          //     card.appendChild(cardImage);
-          //   }
-          // }
-          const carouselInner = document.querySelector(".carousel-item")
-          const cardImg = document.createElement('div');
-
+          for (const property in images) {
+            if (typeof images[property] === 'string' && images[property].startsWith('http')) {
+              const cardImage = document.createElement('img');
+              cardImage.classList.add('.d-block');
+              cardImage.src = images[property];
+              card.appendChild(cardImage);
+            }
+          }
 
 
           const cardBody = document.createElement('div');
