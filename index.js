@@ -1,4 +1,5 @@
 let pokemonData = [];
+
 fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
   .then(response => response.json())
   .then(data => {
@@ -8,10 +9,10 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
   .catch(error => {
     console.error('Erro ao fazer a requisição:', error);
   });
-  const container = document.querySelector('.container');
-  const imgCard = document.querySelector('.d-block w-100');
 
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+const container = document.querySelector('.container');
+
+fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
   .then(response => response.json())
   .then(data => {
     const pokemonData = data.results;
@@ -29,14 +30,18 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
           card.style.width = '18rem';
 
           const images = pokemon.sprites;
-          for (const property in images) {
-            if (typeof images[property] === 'string' && images[property].startsWith('http')) {
-              const cardImage = document.createElement('img');
-              cardImage.classList.add('card-img-top');
-              cardImage.src = images[property];
-              card.appendChild(cardImage);
-            }
-          }
+          // for (const property in images) {
+          //   if (typeof images[property] === 'string' && images[property].startsWith('http')) {
+          //     const cardImage = document.createElement('img');
+          //     cardImage.classList.add('.carousel-item');
+          //     cardImage.src = images[property];
+          //     card.appendChild(cardImage);
+          //   }
+          // }
+          const carouselInner = document.querySelector(".carousel-item")
+          const cardImg = document.createElement('div');
+
+
 
           const cardBody = document.createElement('div');
           cardBody.classList.add('card-body');
@@ -47,7 +52,7 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
 
           const cardText = document.createElement('p');
           cardText.classList.add('card-text');
-          cardText.textContent = 'Some quick example text to build on the card title and make up the bulk of the card\'s content.';
+          cardText.textContent = ''; 
 
           const cardLink = document.createElement('a');
           cardLink.classList.add('btn', 'btn-primary');
@@ -62,14 +67,30 @@ fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
 
           container.appendChild(card);
         });
+
+        // fetch(pokemonData[0].url)
+        //   .then(response => response.json())
+        //   .then(data => {
+        //     const carouselItem = document.querySelector('.carousel');
+        //     carouselItem.classList.add('carousel-item', 'active');
+
+        //     const cardImage = document.createElement('img');
+        //     cardImage.classList.add('d-block', 'w-100');
+        //     cardImage.src = data.sprites.front_default;
+
+        //     carouselItem.appendChild(cardImage);
+
+        //     const carouselInner = document.querySelector('.carousel-inner');
+        //     carouselInner.appendChild(carouselItem);
+        //   });
       });
   });
 
-  fetch(pokemonData[0].url)
-  .then(response => response.json())
-  .then(data => {
-    const cardImage = document.createElement('img');
-    cardImage.classList.add('card-img-top');
-    cardImage.src = data.sprites.front_default;
-    container.querySelector('.card').appendChild(cardImage);
-  });
+const images = document.querySelector(".d-block");
+
+const btn = document.querySelector(".butaopincipal");
+btn.addEventListener("click", clicou);
+
+function clicou (){
+ 
+}
